@@ -2,6 +2,9 @@ package com.alvimCode.myApp.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,9 +39,10 @@ public class CourseController {
 	
 	//@RequestMapping(method = RequestMethod.POST)
 	@PostMapping //anotação do spring para request mapping
-	public void create(@RequestBody Course course) {
+	public ResponseEntity<Course> create(@RequestBody Course course) {
 		//System.out.println(course.getName());
-		courseRepository.save(course);
+		//return courseRepository.save(course);
+		return ResponseEntity.status(HttpStatus.CREATED).body(courseRepository.save(course));
 	}
 	
 }
