@@ -8,4 +8,6 @@ import com.alvimCode.myApp.model.Course;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
+
+
 }

@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alvimCode.myApp.model.Course;
@@ -29,6 +32,13 @@ public class CourseController {
 	@GetMapping
 	public List<Course> list(){
 		return courseRepository.findAll();
+	}
+	
+	//@RequestMapping(method = RequestMethod.POST)
+	@PostMapping //anotação do spring para request mapping
+	public void create(@RequestBody Course course) {
+		//System.out.println(course.getName());
+		courseRepository.save(course);
 	}
 	
 }
